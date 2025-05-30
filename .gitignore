@@ -1,0 +1,6 @@
+*.ipynb_checkpoints
+*~
+reproduced-figures/
+reproduced-results/
+__pycache__/
+!.gitignore
