@@ -355,9 +355,11 @@ class InterfaceTuningSims:
             self.sim.sims_dump_idpy_memory_flag = False
             self.sim.sims_vars['empty'] = 'nan'
             self.sim.DumpSnapshot(file_name = dump_name,
-                                  custom_types = self.sim.custom_types)        
+                                  custom_types = self.sim.custom_types)
 
-        if abs(self.sim.sims_vars['delta_p'][-1]) < 1e-9:
+            return "burst"        
+
+        elif abs(self.sim.sims_vars['delta_p'][-1]) < 1e-9:
             print("The", kind, "has bursted! Dumping Empty simulation")
             '''
             Writing empty simulation file
@@ -378,12 +380,10 @@ class InterfaceTuningSims:
                                      custom_types = self.sim.custom_types)
         else:
             self.sim.sims_vars['n_in_n_out'] = np.array(self.sim.sims_vars['n_in_n_out'])
-            print("Qui!")
             print("Dumping in", dump_name)
             self.sim.sims_dump_idpy_memory_flag = False
             self.sim.sims_vars['n_strip'] = np.array(self.GetDensityStrip(delta_val=delta_strip))
-            self.sim.DumpSnapshot(file_name = dump_name,
-                                custom_types = self.sim.custom_types)
+            self.sim.DumpSnapshot(file_name = dump_name, custom_types = self.sim.custom_types)
             
         n_field = None
         if get_n_field:
@@ -393,6 +393,8 @@ class InterfaceTuningSims:
 
         if get_n_field:
             return n_field
+        
+        return "stable"
 
     def Run3D(self, f_stencil, n_l, n_g, G, psi_sym, psi_code, dump_name, kind, delta_strip, get_n_field=False):
         sims_params_dict = {
