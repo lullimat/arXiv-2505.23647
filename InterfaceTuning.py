@@ -349,6 +349,7 @@ class InterfaceTuningSims:
             convergence_functions = [CheckUConvergenceSCMP, CheckCenterOfMassDeltaPConvergence, CheckMaxUNAN]
         )
 
+        status_flag = None
         if np.isnan(self.sim.sims_vars['max_u'][-1]):
             print("The", kind, "is not stable (nan)! Dumping Empty simulation")
 
@@ -356,11 +357,10 @@ class InterfaceTuningSims:
             self.sim.sims_vars['empty'] = 'nan'
             self.sim.DumpSnapshot(file_name = dump_name,
                                   custom_types = self.sim.custom_types)
-
-            return "burst"        
+            status_flag = "unstable"        
 
         elif abs(self.sim.sims_vars['delta_p'][-1]) < 1e-9:
-            print("The", kind, "has bursted! Dumping Empty simulation")
+            print("The", kind, "has burst! Dumping Empty simulation")
             '''
             Writing empty simulation file
             '''
@@ -368,6 +368,7 @@ class InterfaceTuningSims:
             self.sim.sims_vars['empty'] = 'burst'
             self.sim.DumpSnapshot(file_name = dump_name,
                                   custom_types = self.sim.custom_types)
+            status_flag = "burst"
                     
         elif not self.sim.sims_vars['is_centered_seq'][-1] and not discard_empty:
             print("The", kind, "is not centered! Dumping Empty simulation")
@@ -378,12 +379,15 @@ class InterfaceTuningSims:
             self.sim.sims_vars['empty'] = 'center'
             self.sim.DumpSnapshot(file_name = dump_name,
                                      custom_types = self.sim.custom_types)
+            status_flag = "non-centered"
+
         else:
             self.sim.sims_vars['n_in_n_out'] = np.array(self.sim.sims_vars['n_in_n_out'])
             print("Dumping in", dump_name)
             self.sim.sims_dump_idpy_memory_flag = False
             self.sim.sims_vars['n_strip'] = np.array(self.GetDensityStrip(delta_val=delta_strip))
             self.sim.DumpSnapshot(file_name = dump_name, custom_types = self.sim.custom_types)
+            status_flag = "stable"
             
         n_field = None
         if get_n_field:
@@ -394,7 +398,7 @@ class InterfaceTuningSims:
         if get_n_field:
             return n_field
         
-        return "stable"
+        return status_flag
 
     def Run3D(self, f_stencil, n_l, n_g, G, psi_sym, psi_code, dump_name, kind, delta_strip, get_n_field=False):
         sims_params_dict = {
@@ -434,7 +438,7 @@ class InterfaceTuningSims:
             self.sim.DumpSnapshot(file_name = dump_name,
                                   custom_types = self.sim.custom_types)
 
-        if abs(self.sim.sims_vars['delta_p'][-1]) < 1e-9:
+        elif abs(self.sim.sims_vars['delta_p'][-1]) < 1e-9:
             print("The", kind, "has bursted! Dumping Empty simulation")
             '''
             Writing empty simulation file
