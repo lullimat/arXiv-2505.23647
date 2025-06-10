@@ -37,4 +37,4 @@ A part from the python dependencies a working "latex" environment needs to be in
 ## Disk Requirement
 The output of the fully execute notebook has a memory footprint of -- MB.
 
-Friday May 30, 2025
+Monday June 10, 2025

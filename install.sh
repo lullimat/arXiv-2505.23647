@@ -8,10 +8,10 @@ echo "'Higher-order Tuning of Interface Physics in Multiphase Lattice Boltzmann'
 
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/lullimat/idea.deploy/refs/heads/master/idpy-bootstrap.sh)"
 
-source ~/.bashrc
-idpy-go
-idpy-load
+# source ${HOME}/.bashrc
+# idpy-go
+# idpy-load
 
-cd ./papers/
-python idpy-papers.py arXiv-2505.23647
-cd ./arXiv-2505.23647/
+# cd ./papers/
+# python idpy-papers.py arXiv-2505.23647
+# cd ./arXiv-2505.23647/
