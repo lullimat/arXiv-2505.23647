@@ -8,6 +8,10 @@
 ```bash
 $ git pull
 ```
+## Install [idea.deploy](https://github.com/lullimat/idea.deploy) and clone repository
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/lullimat/arXiv-2505.23647/refs/heads/main/install.sh)"
+```
 
 This project will be updated in order be kept functional for further updates to [**idea.deploy**](https://github.com/lullimat/idea.deploy).
 
@@ -24,11 +28,6 @@ In order to open the present Jupyter notebook "LatticeMomentumBalance.ipynb" you
 In order to execute the code content of a cell, select it and enter the key combination "shift + enter".
 
 As of today, after much testing Firefox, Google Chrome and VSCode have offered the most reliable experience in handling the notebook.
-
-## Installation
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/lullimat/arXiv-2505.23647/refs/heads/main/install.sh)"
-```
 
 ## Dependencies
 
