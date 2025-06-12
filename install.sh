@@ -8,14 +8,17 @@ echo "'Higher-order Tuning of Interface Physics in Multiphase Lattice Boltzmann'
 
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/lullimat/idea.deploy/refs/heads/master/idpy-bootstrap.sh)"
 
-# Sourcing the .bashrc
+# Sourcing aliases
+ALIAS_SOURCE="$(cat ~/.bashrc | grep idea.deploy | grep source)"
 shopt -s expand_aliases
-source ${HOME}/.bashrc
-IDPY_GO="$(type -a idpy-go | cut -d '`' -f 2 | cut -d \' -f 1)"
-IDPY_LOAD="$(type -a idpy-load | cut -d '`' -f 2 | cut -d \' -f 1)"
+eval "${ALIAS_SOURCE}"
 
-echo "IDPY_GO:" "${IDPY_GO}"
-echo "IDPY_LOAD:" "${IDPY_LOAD}"
+# source ${HOME}/.bashrc
+# IDPY_GO="$(type -a idpy-go | cut -d '`' -f 2 | cut -d \' -f 1)"
+# IDPY_LOAD="$(type -a idpy-load | cut -d '`' -f 2 | cut -d \' -f 1)"
+
+# echo "IDPY_GO:" "${IDPY_GO}"
+# echo "IDPY_LOAD:" "${IDPY_LOAD}"
 
 idpy-go
 idpy-load
