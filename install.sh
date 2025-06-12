@@ -13,6 +13,10 @@ shopt -s expand_aliases
 source ${HOME}/.bashrc
 IDPY_GO="$(type -a idpy-go | cut -d '`' -f 2 | cut -d \' -f 1)"
 IDPY_LOAD="$(type -a idpy-load | cut -d '`' -f 2 | cut -d \' -f 1)"
+
+echo "IDPY_GO:" "${IDPY_GO}"
+echo "IDPY_LOAD:" "${IDPY_LOAD}"
+
 idpy-go
 idpy-load
 cd ./papers/
