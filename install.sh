@@ -6,19 +6,24 @@
 echo "Installing the idea.deploy environment for the repository of the paper:"
 echo "'Higher-order Tuning of Interface Physics in Multiphase Lattice Boltzmann'"
 
+echo
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/lullimat/idea.deploy/refs/heads/master/idpy-bootstrap.sh)"
+echo
 
 # Sourcing aliases
 ALIAS_SOURCE="$(cat ~/.bashrc | grep idea.deploy | grep source)"
+
+if [ -z "${ALIAS_SOURCE}" ]; then
+    echo "Error: No 'source' command for idea.deploy found in ~/.bashrc"
+    exit 1
+fi
+
+# Expanding aliases as in idea.deploy
 shopt -s expand_aliases
-eval "${ALIAS_SOURCE}"
-
-# source ${HOME}/.bashrc
-# IDPY_GO="$(type -a idpy-go | cut -d '`' -f 2 | cut -d \' -f 1)"
-# IDPY_LOAD="$(type -a idpy-load | cut -d '`' -f 2 | cut -d \' -f 1)"
-
-# echo "IDPY_GO:" "${IDPY_GO}"
-# echo "IDPY_LOAD:" "${IDPY_LOAD}"
+eval "${ALIAS_SOURCE}" || {
+    echo "Error: Failed to source idea.deploy"
+    exit 1
+}
 
 idpy-go
 idpy-load
