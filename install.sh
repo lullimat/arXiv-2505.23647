@@ -6,7 +6,7 @@
 echo "Installing the idea.deploy environment for the repository of the paper:"
 echo "'Higher-order Tuning of Interface Physics in Multiphase Lattice Boltzmann'"
 
-# bash -c "$(curl -fsSL https://raw.githubusercontent.com/lullimat/idea.deploy/refs/heads/master/idpy-bootstrap.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/lullimat/idea.deploy/refs/heads/master/idpy-bootstrap.sh)"
 
 # Sourcing the .bashrc
 shopt -s expand_aliases
