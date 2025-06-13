@@ -8,7 +8,8 @@
 ```bash
 $ git pull
 ```
-## Install [idea.deploy](https://github.com/lullimat/idea.deploy) and clone repository
+## Paste & Install
+By pasting the link below in a bash shell [idea.deploy](https://github.com/lullimat/idea.deploy) will be installed and the repository cloned
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/lullimat/arXiv-2505.23647/refs/heads/main/install.sh)"
 ```
