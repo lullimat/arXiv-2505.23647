@@ -18,7 +18,7 @@ This project will be updated in order be kept functional for further updates to 
 
 Welcome to the repository related to the paper published on arXiv [https://arxiv.org/abs/2505.23647](https://arxiv.org/abs/2505.23647). In order to use this repository you should have cloned it from the parent project [idea.deploy](https://github.com/lullimat/idea.deploy) in the directory ./papers by means of the local python script idpy-papers.py and switch to 'devel' branch by means of `git checkout devel` command.
 
-In order to open the present Jupyter notebook "LatticeMomentumBalance.ipynb" you should perform the following steps
+In order to open the present Jupyter notebook "MultiPhaseTolmanTuning.ipynb" you should perform the following steps
 - install the [idea.deploy](https://github.com/lullimat/idea.deploy) project, following the instructions in the README.md in the section "Installation"
 - load the idea.deploy python virtual environment: if you installed the bash aliases for the [idea.deploy](https://github.com/lullimat/idea.deploy) project you can issue the command "idpy-load"
 - launch locally the Jupyter server with "idpy-jupyter" or "idpy-jupyter-lab"
@@ -32,9 +32,9 @@ As of today, after much testing Firefox, Google Chrome and VSCode have offered t
 
 ## Dependencies
 
-A part from the python dependencies a working "latex" environment needs to be installed on the system in order to reproduce the plots which contain latex symbols.
+A part from the python dependencies a working "latex" environment needs to be installed on the system in order to reproduce the plots which contain latex symbols. Also, ffmpeg is necessary for generating the video.
 
 ## Disk Requirement
-The output of the fully execute notebook has a memory footprint of -- MB.
+The output of the fully execute notebook has a memory footprint of 3.4 GB.
 
-Monday June 10, 2025
+Friday June 20, 2025
